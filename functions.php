@@ -124,7 +124,6 @@ function child_twentynineteen_customize_register( $wp_customize ) {
     )
   );
 }
-add_action( 'customize_register', 'child_twentynineteen_customize_register' );
 
 /**
  * 親テーマのアクションを子テーマのアクションに入れ替えます。
