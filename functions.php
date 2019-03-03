@@ -135,3 +135,24 @@ function setup_after_parent_theme() {
 }
 // 親テーマの後に実行
 add_action( 'after_setup_theme', 'setup_after_parent_theme', 20 );
+
+/**
+ * デフォルトのサイトアイコンを設定します。
+ * カスタマイザーで設定された場合はそちらを使用します。
+ */
+function filter_site_icon_meta_tags() {
+  if (has_site_icon()) {
+    return;
+  }
+
+  $url = get_stylesheet_directory_uri();
+  // 出力される HTML ソースコードを見やすくするめに、最後に空白行を設置
+  echo <<<EOT
+<link rel="icon" href="{$url}/images/cropped-site_icon-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="{$url}/images/cropped-site_icon-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="{$url}/images/cropped-site_icon-180x180.jpg" />
+<meta name="msapplication-TileImage" content="{$url}/images/cropped-site_icon-270x270.jpg" />
+
+EOT;
+}
+add_filter('wp_head', 'filter_site_icon_meta_tags');
