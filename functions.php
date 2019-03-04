@@ -156,3 +156,14 @@ function filter_site_icon_meta_tags() {
 EOT;
 }
 add_filter('wp_head', 'filter_site_icon_meta_tags');
+
+/**
+ * デフォルトのテーマロゴを出力します。
+ */
+function the_theme_logo() {
+  $url = home_url();
+  $theme_url = get_stylesheet_directory_uri();
+  echo <<<EOT
+<a href="{$url}/" class="custom-logo-link" rel="home" itemprop="url"><img width="190" height="190" src="{$theme_url}/images/theme_logo.jpg" class="custom-logo" alt="test" itemprop="logo" srcset="{$theme_url}/images/theme_logo.jpg 190w, {$theme_url}/theme_logo-150x150.jpg 150w" sizes="(max-width: 34.9rem) calc(100vw - 2rem), (max-width: 53rem) calc(8 * (100vw / 12)), (min-width: 53rem) calc(6 * (100vw / 12)), 100vw" /></a>
+EOT;
+}
