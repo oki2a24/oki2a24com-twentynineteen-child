@@ -21,7 +21,7 @@ add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
  */
 function add_search_box_to_menu( $items, $args ) {
   //var_dump($args);
-  if( $args->theme_location == 'menu-1' ){
+  if( $args->theme_location === 'menu-1' ){
     return $items . '<li>' . get_search_form(false) . '</li>';
   }
 }
