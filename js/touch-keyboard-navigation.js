@@ -193,6 +193,10 @@
 		var o;
 
 		for ( i = 0; i < getFocusedElements.length; i++) {
+			// 親テーマからの修正箇所: メインメニューの検索フォームのフォーカスアウトは除外
+			if (getFocusedElements[i].className === 'search-field') {
+				continue;
+			}
 			getFocusedElements[i].blur();
 		}
 
