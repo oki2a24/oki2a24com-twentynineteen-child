@@ -149,7 +149,6 @@ function child_twentynineteen_customize_register( $wp_customize ) {
 function setup_after_parent_theme() {
   // 子テーマのアクションを追加し、親テーマのアクションを削除
   add_action( 'customize_register', 'child_twentynineteen_customize_register' );
-  remove_action( 'customize_register', 'twentynineteen_customize_register' );
 }
 // 親テーマの後に実行
 add_action( 'after_setup_theme', 'setup_after_parent_theme', 20 );
