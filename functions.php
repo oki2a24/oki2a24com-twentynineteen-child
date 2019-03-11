@@ -46,10 +46,8 @@ function add_search_box_to_menu( $items, $args ) {
 add_filter( 'wp_nav_menu_items', 'add_search_box_to_menu', 10, 2);
 
 /**
- * Add postMessage support for site title and description for the Theme Customizer.
- * 色 > アイキャッチ画像にメインカラーのフィルターを適用する のチェックなしをデフォルトにします。
- * 上記の以外は、 Twenty Nineteen をほぼそのまま上書きするもので、バージョンは以下です。
- * バージョン: 1.3
+ * テーマカスタマイザーの、色 > アイキャッチ画像にメインカラーのフィルターを適用する
+ * のチェックなしをデフォルトにします。
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
@@ -64,16 +62,7 @@ function child_twentynineteen_customize_register( $wp_customize ) {
     )
   );
 }
-
-/**
- * 親テーマのアクションを子テーマのアクションに入れ替えます。
- */
-function setup_after_parent_theme() {
-  // 子テーマのアクションを追加し、親テーマのアクションを削除
-  add_action( 'customize_register', 'child_twentynineteen_customize_register' );
-}
-// 親テーマの後に実行
-add_action( 'after_setup_theme', 'setup_after_parent_theme', 20 );
+add_action( 'customize_register', 'child_twentynineteen_customize_register', 100 );
 
 /**
  * デフォルトのサイトアイコンを設定します。
